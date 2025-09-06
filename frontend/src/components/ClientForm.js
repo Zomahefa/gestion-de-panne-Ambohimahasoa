@@ -54,10 +54,12 @@ const ClientForm = () => {
     <div className="client-form-container">
       <div className="header">
         <img src={logoJirama} alt="Logo JIRAMA" className="logo" />
-        <div>
-          <Link to="/login" className="btn btn-light me-2">🔧 Accès technicien</Link>
-          <Link to="/suivi" className="btn btn-warning">📊 Suivi des pannes</Link>
+        <div className="client-nav mb-4">
+          <Link to="/login" className="btn btn-outline-secondary">🔧 Accès technicien</Link>
+          <Link to="/suivi" className="btn btn-outline-warning">📊 Suivi des pannes</Link>
+          <Link to="/admin-login" className="btn btn-outline-dark">🛠️ Administration</Link>
         </div>
+
       </div>
 
       <h2>📢 Signaler une panne JIRAMA</h2>

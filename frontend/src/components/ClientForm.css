@@ -86,3 +86,15 @@ form button:hover {
     align-items: flex-start;
   }
 }
+.client-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.client-nav .btn {
+  min-width: 160px;
+  font-weight: bold;
+}
+
