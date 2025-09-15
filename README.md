@@ -23,7 +23,7 @@ Une application web complète pour signaler, suivre et résoudre les pannes tech
 ### 1. Cloner le projet
 ```bash
 git clone https://github.com/Zomahefa/gestion-de-panne-Ambohimahasoa.git
-cd jirama-incident-tracker
+cd gestion-de-panne-Ambohimahasoa
 
 📦 Dépendances installées
 asgiref
