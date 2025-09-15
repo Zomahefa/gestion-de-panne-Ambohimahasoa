@@ -14,6 +14,7 @@ const ClientForm = () => {
     localisation: '',
     description: '',
   });
+  const [selectedImage, setSelectedImage] = useState(null); // ✅ image sélectionnée
 
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
@@ -21,6 +22,9 @@ const ClientForm = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleImageChange = (e) => {
+  setSelectedImage(e.target.files[0]); // ✅ stocke le fichier image
   };
 
   const handleSubmit = async (e) => {
@@ -30,10 +34,25 @@ const ClientForm = () => {
     // On accepte tout ce que l'utilisateur entre
 
     try {
-      await axios.post('http://localhost:8000/api/todos/', {
-        ...formData,
-        status: 'pending',
+      const data = new FormData();
+      data.append('client_name', formData.client_name);
+      data.append('contact', formData.contact);
+      data.append('quartier', formData.quartier);
+      data.append('lot', formData.lot || '');
+      data.append('localisation', formData.localisation);
+      data.append('description', formData.description);
+      data.append('status', 'pending');
+
+      if (selectedImage) {
+        data.append('image', selectedImage); // ✅ ajoute l’image si présente
+      }
+
+      await axios.post('http://localhost:8000/api/todos/', data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
       });
+
       setSuccess(true);
       setError('');
       setFormData({
@@ -44,10 +63,12 @@ const ClientForm = () => {
         localisation: '',
         description: '',
       });
+      setSelectedImage(null); // ✅ reset image
     } catch (err) {
       setError("Erreur lors de l'envoi. Veuillez réessayer.");
       setSuccess(false);
     }
+
   };
 
   return (
@@ -96,6 +117,7 @@ const ClientForm = () => {
         <input
           type="text"
           name="lot"
+          placeholder='pas obligatoire mais recommandé'
           value={formData.lot}
           onChange={handleChange}
         />
@@ -116,6 +138,14 @@ const ClientForm = () => {
           onChange={handleChange}
           required
         />
+        <label>Photo de la panne (optionnelle)</label>
+        <input
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+
 
         <button type="submit" className="btn btn-success mt-3">
           📨 Envoyer le signalement

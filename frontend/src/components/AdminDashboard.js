@@ -54,6 +54,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard-container">
         <div className="admin-nav mb-4">
+            <Link to="/admin-technicians" className="btn btn-outline-info">👥 Gérer les techniciens</Link>
             <Link to="/" className="btn btn-outline-primary me-2">🏠 Accueil client</Link>
             <Link to="/login" className="btn btn-outline-secondary me-2">🔧 Technicien</Link>
             <Link to="/suivi" className="btn btn-outline-warning">📊 Suivi des pannes</Link>        
@@ -68,6 +69,7 @@ const AdminDashboard = () => {
             <th>Quartier</th>
             <th>Localisation</th>
             <th>Description</th>
+            <th>Image</th>
             <th>Statut</th>
             <th>Action</th>
           </tr>
@@ -80,6 +82,18 @@ const AdminDashboard = () => {
               <td>{panne.quartier}</td>
               <td>{panne.localisation}</td>
               <td>{panne.description}</td>
+              <td>
+                {panne.image ? (
+                  <img
+                    src={panne.image}
+                    alt="Photo de la panne"
+                    className="admin-image"
+                  />
+                ) : (
+                  <span className="text-muted">Aucune</span>
+                )}
+              </td>
+
               <td>{statusLabels[panne.status]}</td>
               <td>
                 <button className="btn btn-danger btn-sm" onClick={() => handleDelete(panne.id)}>

@@ -47,6 +47,17 @@ const ClientView = () => {
             {incident.technician_note && (
               <p><strong>Note du technicien :</strong> {incident.technician_note}</p>
             )}
+            {incident.image && (
+              <div className="mt-2">
+                <strong>📷 Photo signalée :</strong><br />
+                <img
+                  src={incident.image}
+                  alt="Photo de la panne"
+                  style={{ maxWidth: '100%', maxHeight: '300px', borderRadius: '8px', marginTop: '8px' }}
+                />
+              </div>
+            )}
+
           </div>
         ))}
       </div>

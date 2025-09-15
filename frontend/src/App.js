@@ -7,6 +7,10 @@ import TechnicianDashboard from './components/TechnicianDashboard';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AdminTechnicianManager from './components/AdminTechnicianManager';
+
+
+
 
 function App() {
   return (
@@ -24,6 +28,7 @@ function App() {
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin-technicians" element={<AdminTechnicianManager />} />
       </Routes>
     </Router>
   );

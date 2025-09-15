@@ -81,6 +81,17 @@ const TechnicianDashboard = () => {
               <option value="in_progress">🔧 En cours</option>
               <option value="resolved">✅ Résolu</option>
             </select>
+            {incident.image && (
+              <div className="incident-image-container mt-2">
+                <strong>📷 Photo signalée :</strong><br />
+                <img
+                  src={incident.image}
+                  alt="Photo de la panne"
+                  className="incident-image"
+                />
+              </div>
+            )}
+
           </li>
         ))}
       </ul>

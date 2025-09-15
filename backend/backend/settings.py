@@ -79,10 +79,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'jirama_db',
+        'USER': 'django_user',
+        'PASSWORD': 'Django@2025!',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
+
 
 
 # Password validation
@@ -129,3 +135,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_WHITELIST = [
      'http://localhost:3000'
 ]
+AUTH_USER_MODEL = 'todo.Technician'
+# Media files (uploaded images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
