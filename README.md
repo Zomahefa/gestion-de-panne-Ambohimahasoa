@@ -112,5 +112,3 @@ Comprendre chaque choix technique
 🛡️ Licence
 Ce projet est open-source sous licence MIT.
 
-```bash
-📦 Dépendances installées
